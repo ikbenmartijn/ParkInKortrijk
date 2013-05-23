@@ -24,6 +24,8 @@
 		108BC6F6174E19C90021DCA2 /* DataBron.m in Sources */ = {isa = PBXBuildFile; fileRef = 108BC6F5174E19C90021DCA2 /* DataBron.m */; };
 		108BC6F9174E1D600021DCA2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108BC6F8174E1D600021DCA2 /* MapKit.framework */; };
 		108BC6FD174E1F310021DCA2 /* SimpelePin.m in Sources */ = {isa = PBXBuildFile; fileRef = 108BC6FC174E1F310021DCA2 /* SimpelePin.m */; };
+		108BC736174E65E60021DCA2 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 108BC735174E65E60021DCA2 /* Icon.png */; };
+		108BC738174E65ED0021DCA2 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 108BC737174E65ED0021DCA2 /* Icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +56,8 @@
 		108BC6F8174E1D600021DCA2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		108BC6FB174E1F310021DCA2 /* SimpelePin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpelePin.h; path = helpers/Pin/SimpelePin.h; sourceTree = "<group>"; };
 		108BC6FC174E1F310021DCA2 /* SimpelePin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpelePin.m; path = helpers/Pin/SimpelePin.m; sourceTree = "<group>"; };
+		108BC735174E65E60021DCA2 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		108BC737174E65ED0021DCA2 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 		102C1113174CF20B001057B4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				108BC730174E65980021DCA2 /* images */,
 				102C1114174CF20B001057B4 /* parkinkortijk-Info.plist */,
 				102C1115174CF20B001057B4 /* InfoPlist.strings */,
 				102C1118174CF20B001057B4 /* main.m */,
@@ -168,6 +173,15 @@
 				108BC6FC174E1F310021DCA2 /* SimpelePin.m */,
 			);
 			name = Pin;
+			sourceTree = "<group>";
+		};
+		108BC730174E65980021DCA2 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				108BC737174E65ED0021DCA2 /* Icon@2x.png */,
+				108BC735174E65E60021DCA2 /* Icon.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +239,8 @@
 				102C111F174CF20B001057B4 /* Default.png in Resources */,
 				102C1121174CF20B001057B4 /* Default@2x.png in Resources */,
 				102C1123174CF20B001057B4 /* Default-568h@2x.png in Resources */,
+				108BC736174E65E60021DCA2 /* Icon.png in Resources */,
+				108BC738174E65ED0021DCA2 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
