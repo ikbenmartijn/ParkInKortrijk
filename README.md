@@ -4,8 +4,8 @@ ParkInKortrijk
 Eenvoudige iOS app om het gebruik van de Parko Open Data te demonstreren.
 De app toont alle vrije plaatsen op dit moment. Trek de tabel naar beneden om te herladen.
 
-![Alt text](http://f.cl.ly/items/1j321x3L3u3s3K2S3Z3j/screenshot_pik.png "Screenshot")
-
+![Alt text](https://raw.github.com/ikbenmartijn/ParkInKortrijk/master/Screenshot.png "Screenshot")
+![Alt text](https://raw.github.com/ikbenmartijn/ParkInKortrijk/master/artwork/Icon-72@2x.png "Icoon")
 
 To Do
 =====
