@@ -16,8 +16,14 @@
 		102C111F174CF20B001057B4 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 102C111E174CF20B001057B4 /* Default.png */; };
 		102C1121174CF20B001057B4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 102C1120174CF20B001057B4 /* Default@2x.png */; };
 		102C1123174CF20B001057B4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 102C1122174CF20B001057B4 /* Default-568h@2x.png */; };
-		102C1126174CF20B001057B4 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 102C1124174CF20B001057B4 /* MainStoryboard.storyboard */; };
 		102C1129174CF20B001057B4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 102C1128174CF20B001057B4 /* ViewController.m */; };
+		102C1134174CFD5C001057B4 /* SVHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 102C1131174CFD5C001057B4 /* SVHTTPClient.m */; };
+		102C1135174CFD5C001057B4 /* SVHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 102C1133174CFD5C001057B4 /* SVHTTPRequest.m */; };
+		108BC6F1174E0E7E0021DCA2 /* Sensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 108BC6F0174E0E7E0021DCA2 /* Sensor.m */; };
+		108BC6F3174E10510021DCA2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108BC6F2174E10510021DCA2 /* CoreLocation.framework */; };
+		108BC6F6174E19C90021DCA2 /* DataBron.m in Sources */ = {isa = PBXBuildFile; fileRef = 108BC6F5174E19C90021DCA2 /* DataBron.m */; };
+		108BC6F9174E1D600021DCA2 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 108BC6F8174E1D600021DCA2 /* MapKit.framework */; };
+		108BC6FD174E1F310021DCA2 /* SimpelePin.m in Sources */ = {isa = PBXBuildFile; fileRef = 108BC6FC174E1F310021DCA2 /* SimpelePin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +40,20 @@
 		102C111E174CF20B001057B4 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		102C1120174CF20B001057B4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		102C1122174CF20B001057B4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		102C1125174CF20B001057B4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		102C1127174CF20B001057B4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		102C1128174CF20B001057B4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		102C1130174CFD5C001057B4 /* SVHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVHTTPClient.h; sourceTree = "<group>"; };
+		102C1131174CFD5C001057B4 /* SVHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVHTTPClient.m; sourceTree = "<group>"; };
+		102C1132174CFD5C001057B4 /* SVHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVHTTPRequest.h; sourceTree = "<group>"; };
+		102C1133174CFD5C001057B4 /* SVHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVHTTPRequest.m; sourceTree = "<group>"; };
+		108BC6EF174E0E7E0021DCA2 /* Sensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Sensor.h; path = model/Sensor.h; sourceTree = "<group>"; };
+		108BC6F0174E0E7E0021DCA2 /* Sensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Sensor.m; path = model/Sensor.m; sourceTree = "<group>"; };
+		108BC6F2174E10510021DCA2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		108BC6F4174E19C90021DCA2 /* DataBron.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataBron.h; path = helpers/DataBron/DataBron.h; sourceTree = "<group>"; };
+		108BC6F5174E19C90021DCA2 /* DataBron.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataBron.m; path = helpers/DataBron/DataBron.m; sourceTree = "<group>"; };
+		108BC6F8174E1D600021DCA2 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		108BC6FB174E1F310021DCA2 /* SimpelePin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SimpelePin.h; path = helpers/Pin/SimpelePin.h; sourceTree = "<group>"; };
+		108BC6FC174E1F310021DCA2 /* SimpelePin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SimpelePin.m; path = helpers/Pin/SimpelePin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +61,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				108BC6F9174E1D600021DCA2 /* MapKit.framework in Frameworks */,
+				108BC6F3174E10510021DCA2 /* CoreLocation.framework in Frameworks */,
 				102C110D174CF20B001057B4 /* UIKit.framework in Frameworks */,
 				102C110F174CF20B001057B4 /* Foundation.framework in Frameworks */,
 				102C1111174CF20B001057B4 /* CoreGraphics.framework in Frameworks */,
@@ -73,6 +92,8 @@
 		102C110B174CF20B001057B4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				108BC6F8174E1D600021DCA2 /* MapKit.framework */,
+				108BC6F2174E10510021DCA2 /* CoreLocation.framework */,
 				102C110C174CF20B001057B4 /* UIKit.framework */,
 				102C110E174CF20B001057B4 /* Foundation.framework */,
 				102C1110174CF20B001057B4 /* CoreGraphics.framework */,
@@ -83,9 +104,12 @@
 		102C1112174CF20B001057B4 /* parkinkortijk */ = {
 			isa = PBXGroup;
 			children = (
+				108BC6FA174E1F120021DCA2 /* Pin */,
+				108BC6F7174E19CE0021DCA2 /* DataBron */,
+				108BC6EE174E0E080021DCA2 /* Model */,
+				102C112F174CFD5C001057B4 /* SVHTTPRequest */,
 				102C111B174CF20B001057B4 /* AppDelegate.h */,
 				102C111C174CF20B001057B4 /* AppDelegate.m */,
-				102C1124174CF20B001057B4 /* MainStoryboard.storyboard */,
 				102C1127174CF20B001057B4 /* ViewController.h */,
 				102C1128174CF20B001057B4 /* ViewController.m */,
 				102C1113174CF20B001057B4 /* Supporting Files */,
@@ -105,6 +129,45 @@
 				102C1122174CF20B001057B4 /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		102C112F174CFD5C001057B4 /* SVHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				102C1130174CFD5C001057B4 /* SVHTTPClient.h */,
+				102C1131174CFD5C001057B4 /* SVHTTPClient.m */,
+				102C1132174CFD5C001057B4 /* SVHTTPRequest.h */,
+				102C1133174CFD5C001057B4 /* SVHTTPRequest.m */,
+			);
+			name = SVHTTPRequest;
+			path = helpers/SVHTTPRequest;
+			sourceTree = "<group>";
+		};
+		108BC6EE174E0E080021DCA2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				108BC6EF174E0E7E0021DCA2 /* Sensor.h */,
+				108BC6F0174E0E7E0021DCA2 /* Sensor.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		108BC6F7174E19CE0021DCA2 /* DataBron */ = {
+			isa = PBXGroup;
+			children = (
+				108BC6F4174E19C90021DCA2 /* DataBron.h */,
+				108BC6F5174E19C90021DCA2 /* DataBron.m */,
+			);
+			name = DataBron;
+			sourceTree = "<group>";
+		};
+		108BC6FA174E1F120021DCA2 /* Pin */ = {
+			isa = PBXGroup;
+			children = (
+				108BC6FB174E1F310021DCA2 /* SimpelePin.h */,
+				108BC6FC174E1F310021DCA2 /* SimpelePin.m */,
+			);
+			name = Pin;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,7 +225,6 @@
 				102C111F174CF20B001057B4 /* Default.png in Resources */,
 				102C1121174CF20B001057B4 /* Default@2x.png in Resources */,
 				102C1123174CF20B001057B4 /* Default-568h@2x.png in Resources */,
-				102C1126174CF20B001057B4 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +238,11 @@
 				102C1119174CF20B001057B4 /* main.m in Sources */,
 				102C111D174CF20B001057B4 /* AppDelegate.m in Sources */,
 				102C1129174CF20B001057B4 /* ViewController.m in Sources */,
+				102C1134174CFD5C001057B4 /* SVHTTPClient.m in Sources */,
+				102C1135174CFD5C001057B4 /* SVHTTPRequest.m in Sources */,
+				108BC6F1174E0E7E0021DCA2 /* Sensor.m in Sources */,
+				108BC6F6174E19C90021DCA2 /* DataBron.m in Sources */,
+				108BC6FD174E1F310021DCA2 /* SimpelePin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,14 +255,6 @@
 				102C1116174CF20B001057B4 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		102C1124174CF20B001057B4 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				102C1125174CF20B001057B4 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -298,6 +357,7 @@
 				102C112E174CF20B001057B4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
