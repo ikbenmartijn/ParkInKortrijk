@@ -154,8 +154,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier]; } //did the subtitle style
 
     cell.textLabel.text = [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] straat];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"Zone: %i - Bay: %i", [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] parkingZone],
-                                                                                  [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] parkingBay]];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"Zone: %i - Plaatsnummer: %i", [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] parkingZone],
+                                                                                           [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] parkingBay]];
     return cell;
 }
 
