@@ -18,7 +18,17 @@ Aan Parko
 =========
 
 Bedankt om deze data open te stellen. Toch nog even een paar opmerkingen:
-- Hou je aub aan de standaarden, zeker wat geolocaties betreft. Je hebt me geen plezier gedaan met alles in graden, minuten en seconden te geven.
-- Stel de tijd dat de sensor al bezet is ook open (in seconden) zodat features zoals 'binnen X minuten komt deze vrij' kunnen gemaakt worden.
-- Zones en zo begrijp ik wel, maar ze zijn vrij nutteloos in zo'n beperkte set data
-- JSON, JSON, JSON, JSON, ...
+- Hou je aub aan de standaarden, zeker wat geolocaties betreft. Je hebt me geen plezier gedaan met alles in graden, minuten en seconden te geven :)
+- Stel de tijd dat de sensor al bezet is ook open (in seconden) zodat features zoals 'binnen X minuten komt deze vrij' kunnen worden gemaakt.
+- Zones en zo begrijp ik wel, maar ze zijn vrij nutteloos in zo'n beperkte dataset
+- JSON, JSON, JSON, JSON, ... (XML is zo begin jaren 2000)
+
+Credits
+=======
+
+Je kan me vinden op Twitter: @ikbenmartijn
+
+Andere helden:
+- Voor het parkeermeter-icoontje: The Noun Project (http://thenounproject.com/)
+- Voor het app-icoontje: App Icon template (http://appicontemplate.com/)
+- Voor de snelle requests die de app doet: Sam Vermette (https://github.com/samvermette/SVHTTPRequest)
