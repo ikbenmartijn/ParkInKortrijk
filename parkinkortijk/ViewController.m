@@ -61,14 +61,14 @@
 
 - (void)dataOpgevraagdVoorAlleSensoren:(NSArray*)gekregenSensoren {    
     //Alle sensoren zijn opgevraagd, deel de data met de tabel
-    if (nil == sensoren) {
-        sensoren = gekregenSensoren;
-        //vrije plaatsen apart houden voor de duidelijkheid
-        vrijeParkeerplaatsen = [[NSMutableArray alloc] init];
+    
+    //Creeër ruimte voor de vrije parkeerplaatsen
+    if (!vrijeParkeerplaatsen) {
+         vrijeParkeerplaatsen = [[NSMutableArray alloc] init];
     }
     
     //Overloop de sensoren en voeg toe aan 'vrije plaatsen' en plaats een pin op de kaart
-    for (Sensor *sensor in sensoren) {
+    for (Sensor *sensor in gekregenSensoren) {
         if (sensor.vrij) {
             [vrijeParkeerplaatsen addObject:sensor];
             
@@ -113,8 +113,10 @@
 }
 
 - (void)herlaadData:(id)sender {
-    //Leeg de bestaande tabel en data
-    sensoren = nil;
+    //Leeg de bestaande tabel, kaart en data
+    for (id<MKAnnotation>pin in parkeerplaatsenKaart.annotations) {
+        [parkeerplaatsenKaart removeAnnotation:pin];
+    }
     vrijeParkeerplaatsen = nil;
     
     //Haal nieuwe data en stop de refresher

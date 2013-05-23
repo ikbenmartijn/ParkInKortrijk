@@ -26,14 +26,25 @@
 }
 
 - (void)haalParkeerDataOp:(id)sender {
+    //Als er nog data aanwezig is van de vorige load > wissen
+    if (sensoren) {
+        [sensoren removeAllObjects];
+    }
+    
     [[SVHTTPClient sharedClient] GET:@"http://www.parkodata.be/OpenData/ShopAndGoOccupation.php"
                           parameters:nil
                           completion:^(id response, NSHTTPURLResponse *urlResponse, NSError *error) {
                               NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:response];
                               [xmlParser setDelegate:self];
                               [xmlParser parse];
-                              
                           }];
+}
+
+- (void)geefDataDoor {
+    if ([self.delegate respondsToSelector:@selector(dataOpgevraagdVoorAlleSensoren:)]) {
+        [self.delegate dataOpgevraagdVoorAlleSensoren:[NSArray arrayWithArray:sensoren]];
+        //[sensoren removeAllObjects];
+    }
 }
 
 #pragma mark - NSXMLParser Methods
@@ -56,11 +67,8 @@
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
     if ([elementName isEqualToString:@"Sensoren"]) {
-        if ([self.delegate respondsToSelector:@selector(dataOpgevraagdVoorAlleSensoren:)]) {
-            [self.delegate dataOpgevraagdVoorAlleSensoren:[NSArray arrayWithArray:sensoren]];
-        }
+        [self geefDataDoor];
     }
-    
 }
 
 @end
