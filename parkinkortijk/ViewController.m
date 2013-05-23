@@ -15,8 +15,8 @@
 @implementation ViewController
 
 @synthesize dataBron;
-@synthesize sensoren;
-@synthesize vrijeParkeerplaatsen;
+@synthesize sensoren, vrijeParkeerplaatsen;
+@synthesize parkeerplaatsenKaart, parkeerplaatsenTabel, parkeerplaatsenTabelRefreshControl;
 
 - (void)viewDidLoad
 {
@@ -30,62 +30,106 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    //Zet de kaart en de tabel uit op de view
+    //1. Kaart
+    parkeerplaatsenKaart = [[MKMapView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x,
+                                                                       self.view.bounds.origin.y,
+                                                                       CGRectGetWidth(self.view.bounds),
+                                                                       150)];
+    [self.view addSubview:parkeerplaatsenKaart];
+    
+    //2a. Tabel
+    parkeerplaatsenTabel = [[UITableView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x,
+                                                                         150,
+                                                                         CGRectGetWidth(self.view.bounds),
+                                                                         CGRectGetHeight(self.view.bounds) - 150)];
+    [parkeerplaatsenTabel setDelegate:self];
+    [parkeerplaatsenTabel setDataSource:self];
+    [self.view addSubview:parkeerplaatsenTabel];
+    
+    //2b. Refreshcontrol voor de tabel
+    parkeerplaatsenTabelRefreshControl = [[UIRefreshControl alloc] init];
+    [parkeerplaatsenTabelRefreshControl addTarget:self action:@selector(herlaadData:) forControlEvents:UIControlEventValueChanged];
+    [parkeerplaatsenTabel addSubview:parkeerplaatsenTabelRefreshControl];
+    
+    //Haal de data op en bevolk de views
     dataBron = [[DataBron alloc] init];
     [dataBron setDelegate:self];
 }
 
 #pragma mark - DataBron delegate methods
 
-- (void)dataOpgevraagdVoorAlleSensoren:(NSArray*)gekregenSensoren {
-    //Alle sensoren zijn opgevraagd.
-    MKMapView *kaart = [[MKMapView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x,
-                                                                   self.view.bounds.origin.y,
-                                                                   CGRectGetWidth(self.view.bounds),
-                                                                   150)];
-    [self.view addSubview:kaart];
-    
+- (void)dataOpgevraagdVoorAlleSensoren:(NSArray*)gekregenSensoren {    
+    //Alle sensoren zijn opgevraagd, deel de data met de tabel
     if (nil == sensoren) {
         sensoren = gekregenSensoren;
+        //vrije plaatsen apart houden voor de duidelijkheid
         vrijeParkeerplaatsen = [[NSMutableArray alloc] init];
     }
     
+    //Overloop de sensoren en voeg toe aan 'vrije plaatsen' en plaats een pin op de kaart
     for (Sensor *sensor in sensoren) {
         if (sensor.vrij) {
             [vrijeParkeerplaatsen addObject:sensor];
+            
             SimpelePin *pin = [[SimpelePin alloc] initMetCoordinaat:sensor.locatie.coordinate];
-            [kaart addAnnotation:pin];
+            [parkeerplaatsenKaart addAnnotation:pin];
         }
     }
     
+    //Zorg ervoor dat de kaart de pins op een nuttige manier toont
+    [self zoomInOpDeKaart:self.parkeerplaatsenKaart];
+    
+    //Vul de tabel
+    [parkeerplaatsenTabel reloadData];
+}
+
+#pragma mark - Eigen functies
+
+- (void)zoomInOpDeKaart:(MKMapView*)kaart {
     MKMapRect zoomRect = MKMapRectNull;
+    
+    //Haal de onderstaande lijnen uit comments als je ook de gebruiks' locatie wil meenemen in de kaart
     /*
-    MKMapPoint annotationPoint = MKMapPointForCoordinate(kaart.userLocation.coordinate);
-    zoomRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
-    */
+     MKMapPoint annotationPoint = MKMapPointForCoordinate(kaart.userLocation.coordinate);
+     zoomRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 0.1, 0.1);
+     */
+    
+    //Overloop elke pin, neem telkens het gebied al 'union' zodat we van een superklein naar een goed leesbare kaart gaan
     for (id<MKAnnotation> annotation in kaart.annotations)
     {
         MKMapPoint annotationPoint = MKMapPointForCoordinate(annotation.coordinate);
-        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 100, 100);
+        MKMapRect pointRect = MKMapRectMake(annotationPoint.x, annotationPoint.y, 1.0, 1.0);
         zoomRect = MKMapRectUnion(zoomRect, pointRect);
     }
     
+    //Wat magie om niet helemaal tegen de randen te plakken
     zoomRect.origin.y = zoomRect.origin.y - 250;
-    zoomRect.size.width = zoomRect.size.width * 1.05;
-    zoomRect.size.height = zoomRect.size.height * 1.05;
+    zoomRect.size.width = zoomRect.size.width * 1.1;
+    zoomRect.size.height = zoomRect.size.height * 1.1;
     
+    //Pas de zoomrect toe
     [kaart setVisibleMapRect:zoomRect animated:YES];
+}
+
+- (void)herlaadData:(id)sender {
+    //Leeg de bestaande tabel en data
+    sensoren = nil;
+    vrijeParkeerplaatsen = nil;
     
-    UITableView *parkeerTabel = [[UITableView alloc] initWithFrame:CGRectMake(self.view.bounds.origin.x,
-                                                                              150,
-                                                                              CGRectGetWidth(self.view.bounds),
-                                                                              CGRectGetHeight(self.view.bounds) - 150)];
-    [parkeerTabel setDelegate:self];
-    [parkeerTabel setDataSource:self];
-    [self.view addSubview:parkeerTabel];
-    
-    UIRefreshControl *verfrisser = [[UIRefreshControl alloc] init];
-    [verfrisser addTarget:dataBron action:@selector(haalParkeerDataOp:) forControlEvents:UIControlEventValueChanged];
-    [parkeerTabel addSubview:verfrisser];
+    //Haal nieuwe data en stop de refresher
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        parkeerplaatsenTabelRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Laden..."];
+        [dataBron haalParkeerDataOp:self];
+        dispatch_async(dispatch_get_main_queue(), ^{            
+            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+            [formatter setDateFormat:@"H:mm"];
+            NSString *laatstGeladen = [NSString stringWithFormat:@"Laatst geladen op %@", [formatter stringFromDate:[NSDate date]]];
+            parkeerplaatsenTabelRefreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:laatstGeladen];
+            
+            [self.parkeerplaatsenTabelRefreshControl endRefreshing];
+        });
+    });    
 }
 
 #pragma mark - Table view data source
@@ -112,7 +156,6 @@
     cell.textLabel.text = [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] straat];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"Zone: %i - Bay: %i", [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] parkingZone],
                                                                                   [[vrijeParkeerplaatsen objectAtIndex:indexPath.row] parkingBay]];
-    
     return cell;
 }
 

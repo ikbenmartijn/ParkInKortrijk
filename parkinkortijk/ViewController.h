@@ -20,11 +20,19 @@
     
     NSArray *sensoren;
     NSMutableArray *vrijeParkeerplaatsen;
+    
+    IBOutlet MKMapView *parkeerplaatsenKaart;
+    IBOutlet UITableView *parkeerplaatsenTabel;
+    IBOutlet UIRefreshControl *parkeerplaatsenTabelRefreshControl;
 }
 
 @property (nonatomic, retain) DataBron *dataBron;
 
 @property (nonatomic, retain) NSArray *sensoren;
 @property (nonatomic, retain) NSMutableArray *vrijeParkeerplaatsen;
+
+@property (nonatomic, retain) MKMapView *parkeerplaatsenKaart;
+@property (nonatomic, retain) UITableView *parkeerplaatsenTabel;
+@property (nonatomic, retain) UIRefreshControl *parkeerplaatsenTabelRefreshControl;
 
 @end
